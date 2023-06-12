@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Make a Prediction</title>
+</head>
+
+<body>
+    <h1>Make a Prediction</h1>
+    <form method="post" action="/predict">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required><br><br>
+        <label for="type">Room Type:</label>
+        <input type="text" id="type" name="type" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    {% if location and room_type and prediction_result %}
+    <h2>Prediction Result</h2>
+    <p>Location: {{ location }}</p>
+    <p>Room Type: {{ room_type }}</p>
+    <p>Result: {{ prediction_result }}</p>
+    {% endif %}
+</body>
+
+</html>

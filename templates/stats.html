@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Statistical Analysis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        
+        h1 {
+            font-size: 24px;
+        }
+        
+        .chart-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .stats-table {
+            margin-top: 30px;
+            margin-bottom: 50px;
+            border-collapse: collapse;
+            width: 70%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .stats-table th,
+        .stats-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        .stats-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Statistical Analysis</h1>
+
+    <div class="chart-container">
+        <img src="data:image/png;base64,{{ hist_img_base64 }}" alt="Price Distribution Histogram">
+    </div>
+
+    <div class="chart-container">
+        <img src="data:image/png;base64,{{ pie_img_base64 }}" alt="Room Type Distribution Pie Chart">
+    </div>
+
+    <table class="stats-table">
+        <tr>
+            <th>Room Type</th>
+            <th>Max Price</th>
+            <th>Min Price</th>
+            <th>Mean Price</th>
+            <th>Average Reviews</th>
+        </tr>
+        {% for row in room_type_stats.iterrows() %}
+        <tr>
+            <td>{{ row[1]['type'] }}</td>
+            <td>{{ row[1]['max_price'] }}</td>
+            <td>{{ row[1]['min_price'] }}</td>
+            <td>{{ row[1]['mean_price'] }}</td>
+            <td>{{ row[1]['avg_reviews'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
